@@ -67,9 +67,10 @@ The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstra
 ### **Otimizações Realizadas**
 
 ##### Em index.html:
-1. Criação de Scripts Assíncronos
+1. Criação de Scripts Assíncronos que utilizam defer para evitar bloqueio de renderização.
 2. Criação de Consultas de Mídia
 3. Remoção de fontes de texto Web
+4. Incorporação in-line do css presente em style.css
 
 ##### Em style.css, print.css e perfmatters.js:
 1. Minificação destes arquivos
