@@ -448,11 +448,13 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
+  // Removendo o Layout Síncrono Forçado
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+    var dx = determineDx(randomPizzas[0], size);
+    var newwidth = (randomPizzas[0].offsetWidth + dx) + 'px';
+    for (var i = 0; i < randomPizzas.length; i++) {
+      randomPizzas[i].style.width = newwidth;
     }
   }
 
@@ -501,10 +503,11 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
+  // Removendo a causa do FSL através da criação da variável "phase" no
+  // momento em que se cria cada elemento (linha 538).
   var items = document.querySelectorAll('.mover');
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    items[i].style.left = items[i].basicLeft + 100 * items[i].phase + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -532,6 +535,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
+    elem.phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
   updatePositions();
