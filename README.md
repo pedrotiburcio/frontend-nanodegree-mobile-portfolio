@@ -56,7 +56,7 @@ The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstra
 
 --------------------------------------------------------------------------------
 
-###**Instalação**
+### **Instalação**
 
 1. Clique no botão verde para fazer o download e selecione a opção "Download Zip".
 2. Descompacte o arquivo zip.
@@ -64,18 +64,18 @@ The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstra
 4. Abra o arquivo views/pizza.html para exibir a página da pizzaria.
 
 
-###**Otimizações Realizadas**
+### **Otimizações Realizadas**
 
-####Em index.html:
+##### Em index.html:
 1. Criação de Scripts Assíncronos
 2. Criação de Consultas de Mídia
 3. Remoção de fontes de texto Web
 
-####Em style.css, print.css e perfmatters.js:
+##### Em style.css, print.css e perfmatters.js:
 1. Minificação destes arquivos
 
-####Em todas as imagens do diretório img:
+##### Em todas as imagens do diretório img:
 1. Redução significativa no tamanho das imagens
 
-####Em views/js/main.js:
+#### Em views/js/main.js:
 1. Remoção da causa do Layout Síncrono Forçado nos métodos updatePositions() e changePizzaSize(size)
